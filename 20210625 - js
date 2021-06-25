@@ -1,0 +1,24 @@
+typeof : 변수명의 앞에 사용해서 데이터 타입을 알아낸다. 
+ex) console.log(typeof "123");
+
+prompt : 입력값을 받는 창을 띄운다 (자바스크립트를 중지시키고 계속 실행중 상태로 보여지기 때문에 요새는 쓰지 않는 초기 function이다.
+ex) const test = prompt("How old are you?");
+  -> 페이지 시작 시 입력창이 뜨며 입력한 값이 test에 저장된다.
+
+isNaN(value) : 값이 숫자인지 아닌지 판별해주는 function으로, 숫자타입이 아닐 경우 true / 숫자타입일 경우 false를 반환한다.
+ex) if( isNaN("1") ){
+  // execute code
+}
+"1"은 생김새는 숫자이지만 큰 따옴표로 문자열을 나타내기 때문에 숫자가 아니다.
+그러므로 isNaN에서 숫자가 아닌 것으로 판단한 후 true를 반환하여
+위의 conditional 내의 execute code는 실행된다.
+
+==와 ===의 차이
+==는 의미상 값을 비교, ===는 보이는 그대로 데이터 타입까지 일치하는지 확인하는 것이다.
+ex) true = 1 은 true 이지만, true === 1 은 false 이다. (개발자 도구에서 바로 확인 가능하며, 컴퓨터는 1을 true / 0을 false로 인식한다.)
+
+development tool의 console에서 document 입력 시 해당 화면의 html 코드가 나오고
+console.dir(document) 입력 시 해당 html파일의 많은 정보를 확인할 수 있으며, 현재 진행중인 강의에서는 document.title을 확인하기 위해 사용했다.
+이 값은 <title>태그의 innerHTML 이다.
+위와 같은 내용으로 javascript는 HTML에 접근할 수 있게 설정이 되어있다는 것을 알 수 있다. (javascript 관점에서 html 코드를 본다고 생각하면 된다.)
+
