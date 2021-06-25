@@ -7,4 +7,5 @@ isNaN(value) : 값이 숫자인지 아닌지 판별해주는 function으로, 숫
 development tool의 console에서 document 입력 시 해당 화면의 html 코드가 나오고
 console.dir(document) 입력 시 해당 html파일의 많은 정보를 확인할 수 있으며, 현재 진행중인 강의에서는 document.title을 확인하기 위해 사용했다.
 이 값은 <title>태그의 innerHTML 이다.
+위와 같은 내용으로 javascript는 HTML에 접근할 수 있게 설정이 되어있다는 것을 알 수 있다.
 
