@@ -1,29 +1,63 @@
 typeof : 변수명의 앞에 사용해서 데이터 타입을 알아낸다. 
-ex) console.log(typeof "123");
+  ex) console.log(typeof "123");
 
 prompt : 입력값을 받는 창을 띄운다 (자바스크립트를 중지시키고 계속 실행중 상태로 보여지기 때문에 요새는 쓰지 않는 초기 function이다.
-ex) const test = prompt("How old are you?");
-  -> 페이지 시작 시 입력창이 뜨며 입력한 값이 test에 저장된다.
+  ex) const test = prompt("How old are you?");
+    -> 페이지 시작 시 입력창이 뜨며 입력한 값이 test에 저장된다.
 
 isNaN(value) : 값이 숫자인지 아닌지 판별해주는 function으로, 숫자타입이 아닐 경우 true / 숫자타입일 경우 false를 반환한다.
-ex) if( isNaN("1") ){
-  // execute code
-}
-"1"은 생김새는 숫자이지만 큰 따옴표로 문자열을 나타내기 때문에 숫자가 아니다.
-그러므로 isNaN에서 숫자가 아닌 것으로 판단한 후 true를 반환하여
-위의 conditional 내의 execute code는 실행된다.
+  ex) if( isNaN("1") ){
+    // execute code
+  }
+  "1"은 생김새는 숫자이지만 큰 따옴표로 문자열을 나타내기 때문에 숫자가 아니다.
+  그러므로 isNaN에서 숫자가 아닌 것으로 판단한 후 true를 반환하여
+  위의 conditional 내의 execute code는 실행된다.
 
 ==와 ===의 차이
-==는 의미상 값을 비교, ===는 보이는 그대로 데이터 타입까지 일치하는지 확인하는 것이다.
-ex) true = 1 은 true 이지만, true === 1 은 false 이다. (개발자 도구에서 바로 확인 가능하며, 컴퓨터는 1을 true / 0을 false로 인식한다.)
+  ==는 의미상 값을 비교, ===는 보이는 그대로 데이터 타입까지 일치하는지 확인하는 것이다.
+  ex) true = 1 은 true 이지만, true === 1 은 false 이다. (개발자 도구에서 바로 확인 가능하며, 컴퓨터는 1을 true / 0을 false로 인식한다.)
 
 development tool의 console에서 document 입력 시 해당 화면의 html 코드가 나오고
 console.dir(document) 입력 시 해당 html파일의 많은 정보를 확인할 수 있으며, 현재 진행중인 강의에서는 document.title을 확인하기 위해 사용했다.
 이 값은 <title>태그의 innerHTML 이다.
 위와 같은 내용으로 javascript는 HTML에 접근할 수 있게 설정이 되어있다는 것을 알 수 있다. (javascript 관점에서 html 코드를 본다고 생각하면 된다.)
 
-javascript 코드로 html 코드의 값을 얻어오는 방법
-1. document.getElementById("elementId")
-console.dir로 얻어온 값을 확인해보면 accessKey 부터 translate 까지 정말 많은 정보를 알아낼 수 있다.
-javascript 코드로 해당 html의 코드들을 object로 얻어내서 정보들을 얻어낸다고 생각한다.
+
+HTML element를 Javascript로 접근하는 방법
+
+  1. document.getElementById("elementId");
+    console.dir로 얻어온 값을 확인해보면 accessKey 부터 translate 까지 정말 많은 정보를 알아낼 수 있다.
+    javascript 코드로 해당 html의 코드들을 object로 얻어내서 정보들을 얻어낸다고 생각한다.
+
+  ** Cannot set property 'innerText' of null
+    코드 내에 어떤 값이 null인데, 그 값에 접근하려 할 때 나타나는 에러
+    
+  2. document.getElementByClassName("elementClassName");
+    class는 같은 className으로 여러개를 만들 수 있기 때문에 같은 값들은 array[] 형식으로 가져온다.
+    id는 중복을 허용하지 않으므로 최초로 설정된 값 하나만 가져온다.
+    
+  3. document.getElementByTagName("elementTagName");
+    이 또한 className과 마찬가지로 여러개의 값이 있을 경우 array[] 형식으로 값을 얻는다.
+    
+  4. document.querySelector("");
+    element를 CSS 방식으로 검색한다.
+    element가 <div className = "hello"> 태그 내부의 <h1> 태그일 경우 document.querySelector(".hello:first-child h1"); 과 같은 형식으로 값을 얻어온다.
+    또한 이 방식은 id처럼 단 하나의 값만 return한다.
+    여러개의 값을 다 가지고 오고 싶다면 querySelectorAll()을 사용하면 된다. ( array[] 형식 )
+    
+** HTML 코드 내의 <script src="">로 경로 지정을 해주어서 Javascript 코드로 값을 가져오거나 색상을 바꾸거나 기능을 사용할 수 있었다.
+js파일의 경로를 지정해주지 않고 코드를 작성한다면 동작되지 않는 현상을 접할 수도 있을 것이다.
+
+변수명.propertyName.propertyValue 로 property의 속성을 변화시킬 수 있다.
+  ex) title.style.color = "blue";
+  
+=========================================================
+title.addEventListener("click", handleTitleClick);
+
+function handleTitleClick(){
+  console.log("title was clicked!");
+}
+=========================================================
+특정 부분에 기능을 걸어놓은 것이 아닌, Javascript에 function을 생성해놓은 후 user가 event를 일으키면 javascript가 실행버튼을 눌러주는 개념
+user가 직접 버튼을 누르는 것과는 다른 개념이다.
 
