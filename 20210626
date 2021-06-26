@@ -1,0 +1,50 @@
+event 를 addEventListener 외에 listening 하는 방법
+  oneventname property에 event listener를 할당한다.
+  ex) title.onclick = handleTitleClick;
+
+현재 강의에서는 addEventListener를 더 선호한다.
+  -> .removeEventListener로 event listener를 제거할 수 있기 때문이다.
+  
+학습을 진행하면서 추가적으로 배웠던 event (추후에 documentation을 보고 혼자 해보자)
+  resize : 창의 크기가 변화하면 작동한다.
+  copy : html코드 내의 text를 복사하면 작동한다.
+  offline : wi-fi가 연결이 끊기면 작동한다.
+  online : wi-fi가 연결되면 작동한다.
+
+국비교육 프로젝트 진행 당시에는 onclick event에서 ajax로 textColor의 변화를 주는 방식으로 했었는데,
+Javascript와 CSS의 기능을 분리하려한다면 className에 style을 주고 Javascript에서 해당 Tag 에 className을 부여하는 방식으로 한다.
+
+raw value : 사용자가 지정한 value
+  ex) h1.className = "clicked"; // 여기서는 clicked가 raw value가 된다.
+  
+raw value를 사용하면 오타가 났을 경우 하나하나 봐야하는 문제가 생긴다.
+하지만 const clickedClass = "clicked";로 상수 정의 후 clickedClass를 사용함에 있어 오타가 난다면
+clickeClass is not defined 와 같은 에러로 Javascript가 에러의 이유와 위치를 알려준다.
+
+==========================================================
+function handleTitleClick(){
+  const clickedClass = "clicked sexy-font";
+  if(h1.className === clickedClass){
+    h1.className = "";
+  } else {
+    h1.className = clickedClass;
+  }
+}
+
+h1.addEventListener("click", handleTitleClick);
+==========================================================
+
+해당 CSS가 적용된 클래스 를 태그에 넣거나 빼고 싶을 때 className을 사용해도 되지만,
+기존의 클래스는 남겨놓고 추가 클래스를 넣거나 빼고 싶을 때 classList를 사용한다.
+
+==========================================================
+function handleTitleClick(){
+  const clickedClass = "clicked";
+  if(h1.classList.contains(clickedClass)){
+    h1.classList.remove(clickedClass);
+  } else {
+    h1.classList.add(clickedClass);
+  }
+}
+==========================================================
+
