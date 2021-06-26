@@ -48,3 +48,33 @@ function handleTitleClick(){
 }
 ==========================================================
 
+on/off 2가지의 상태변화만 있다면, toggle() function을 사용해준다.
+==========================================================
+function handleTitleClick(){
+  h1.classList.toggle("clicked");
+}
+==========================================================
+
+form 태그 내의 button을 누르면 input data 가 submit 되지만 페이지가 계속 새로고침된다.
+
+
+EventListener 의 function 정의에서 argument data를 보는 방법
+==========================================================
+const loginForm = document.querySelector("#login-form");
+
+function onLoginSubmit(tomato){
+  tomato.preventDefault();
+  console.log(tomato);
+}
+
+loginForm.addEventListener("submit", onLoginSubmit);
+==========================================================
+첫번째 argument에 해당 event 의 정보가 담겨있다.
+
+.preventDefault();
+  어떤 event 의 기본 행동이 발생하지 않도록 막는 function
+
+"String" + valuableName; 으로 문자열을 합칠 수도 있지만, `String + ${valuableName}` 으로 합칠 수도 있다.
+** 여기서 `와 '를 잘 구분하자. ( `는 숫자 1 왼쪽, '는 엔터키 왼쪽에 있다.)
+  ex) greeting.innerText = `Hello ${username}`;
+
