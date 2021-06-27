@@ -1,0 +1,8 @@
+JSON.stringify(argument)
+  Javascript object 나 array 또는 어떤 Javascript 코드이건 String 으로 만들어준다.
+  ex) localStorage.setItem("todos", JSON.stringify(array));
+  
+JSON.parse("")
+  String 을 Javascript가 이해할 수 있는 코드로 만들 수 있다.
+  ex) JSON.parse("[1,2,3,4]") => [1,2,3,4]
+  
