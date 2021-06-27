@@ -28,4 +28,3 @@ openweathermap.org
   
 fetch(url)
   해당 url 로 가지않고 url 내의 정보를 얻어오는 function이다.
-  
