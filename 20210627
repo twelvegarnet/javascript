@@ -6,3 +6,26 @@ JSON.parse("")
   String 을 Javascript가 이해할 수 있는 코드로 만들 수 있다.
   ex) JSON.parse("[1,2,3,4]") => [1,2,3,4]
   
+array 안의 내용물을 전부 실행하고 싶을 때 forEach를 사용한다.
+  ex) array.forEach( (item) => blahblahblah);
+  또는 array.forEach(function); 이후에 function argument 를 item 으로 받아서 각 데이터를 호출된 함수에 넣어 사용한다.
+  
+array.filter(function);
+  filter 는 forEach 와 비슷하게 동작하고, function 함수는 반드시 true 를 리턴해야 한다.
+  false 를 리턴할 경우 해당 값을 걸러서 기존의 array에 포함시키지 않는다.
+  ex) function sexyFilter(item){return item !== 3}
+      [1,2,3,4,5].filter(sexyFilter)
+      (4) [1, 2, 4, 5]
+
+navigator.geolocation.getCurrentPosition(successCallback, errorCallback)
+  현재 사용자의 위치를 알아내는 Javascript Code
+  successCallback 함수를 정의할 때 argument 를 console.log로 불러내보면 여러가지 정보가 나오는데,
+  그 중 사용자의 위치를 표시하는 값은 latitude 와 longitude 이다.
+  
+openweathermap.org
+  사용자의 위도와 경도를 얻어 도시와 날씨를 얻는 API가 있다.
+  이 외에도 Solar Radiation API, Air Pollution API, Geocoding API 등 여러가지가 있다.
+  
+fetch(url)
+  해당 url 로 가지않고 url 내의 정보를 얻어오는 function이다.
+  
