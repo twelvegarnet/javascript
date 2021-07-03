@@ -6,7 +6,7 @@
   ex) String boardContent = board.getBoardContent().replace("\r\n", "<br>");
     board.setBoardContent(boardContent);
     
-  2021.07.03 추가사항
+  2021.07.03 변경사항
   위와 같이 할 경우 모든 태그에 대한 치환을 정해주어야 하는데 그 수가 많다.
   그러므로 태그도 텍스트 자체로 받아들이는 <pre>태그를 기존의 삽입내용에 추가하여 DB에 저장한다.
   
