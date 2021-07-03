@@ -1,0 +1,37 @@
+1. 글 작성시 <textarea>에 작성된 글의 개행이 상세보기에서 적용되지 않음
+  기존의 입력 값을 Javascript에서 처리해보려고 했지만 되지 않았다.
+  Controller단에서 받아온 textarea의 값을 변수에 저장해서 replace(old String, new String)를 이용하여 치환한다.
+  이 방법을 이용해서 "\n" 으로 표현된 개행문자를 "<br>"로 치환한다.
+  이와 같이 해주면 DB에 <br>이 삽입되며, 상세보기에서 출력 시 개행이 적용되어 나타난다.
+  ex) String boardContent = board.getBoardContent().replace("\r\n", "<br>");
+    board.setBoardContent(boardContent);
+    
+  2021.07.03 추가사항
+  위와 같이 할 경우 모든 태그에 대한 치환을 정해주어야 하는데 그 수가 많다.
+  그러므로 태그도 텍스트 자체로 받아들이는 <pre>태그를 기존의 삽입내용에 추가하여 DB에 저장한다.
+  
+  제목과 내용 모두 <pre>태그를 추가하여 DB에 저장하지만, 
+  제목은 <input type="text" />이므로 한 줄 내용만을 입력받기에 view시 문두와 문미에 <pre>태그를 지워서 태그를 텍스트 그대로 출력하고
+  내용은 <textarea> 태그이므로 기존에 적용된 개행 등의 기능이 그대로 적용되어야 하기에, <pre>태그가 적용된 상태로 가져온다.
+    
+2. 비밀번호 체크 등을 할 때 숫자로 입력하면 체크가 제대로 되지만, 문자로 입력하면 체크가 안되는 상황
+==============================================================================================
+  function deleteBoard(){
+    const chk = confirm("게시글을 삭제하시겠습니까?");
+      
+    if(chk){
+    	const pwchk = prompt("비밀번호를 입력해주세요.");
+	if(pwchk === ${board.boardPw}){
+	  location.href = "/board/delete?boardNo="+${board.boardNo};
+	} else {
+	  alert("정확한 비밀번호를 입력해주세요.");
+	}
+	
+	} else {
+	  return;
+    	}
+    }
+  ==============================================================================================
+  위와 같은 경우 숫자는 비교가 되지만, 문자열은 문자열로 인식하지 못해 비교를 할 수 없다.
+  따라서, if(pwchk === ${board.boardPw}) 이 부분을 if(pwchk === '${board.boardPw}') 로 바꾸어주면 정상 작동한다.
+  
